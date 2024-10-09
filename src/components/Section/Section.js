@@ -30,7 +30,6 @@ export default function Section({
   };
 
   //effects
-
   return (
     <button
       disabled={section !== null || isGameOver}
