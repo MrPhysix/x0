@@ -13,12 +13,29 @@
 }
 
 .modalWrapper {
+  padding: 50px;
   font-size: 36px;
-  padding: 20px;
-  width: 30vw;
   background-color: #fff;
   display: flex;
+  gap: 40px;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+}
+
+.modalWrapper p {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 36px;
+  font-family: inherit;
+  font-weight: normal;
+  margin: 0;
+  padding: 0;
+  text-align: center;
+}
+
+.icon {
+  width: 1em;
+  height: 1em;
 }

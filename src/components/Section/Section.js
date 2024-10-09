@@ -4,18 +4,20 @@ import oImage from "../../images/o.svg";
 
 export default function Section({
   number,
-  sections,
-  setSections,
-  player,
-  setPlayer,
+  section,
   isGameOver,
+  handleOnSectionClick,
 }) {
   const displayedImg = (() => {
-    switch (sections[number]) {
-      case 1:
-        return <img src={xImage} alt="section-symbol" />;
-      case 2:
-        return <img src={oImage} alt="section-symbol" />;
+    switch (section) {
+      case true:
+        return (
+          <img className={styles.icon} src={xImage} alt="section-symbol" />
+        );
+      case false:
+        return (
+          <img className={styles.icon} src={oImage} alt="section-symbol" />
+        );
       default:
         return null;
     }
@@ -23,22 +25,16 @@ export default function Section({
 
   const handleOnClick = (evt) => {
     evt.preventDefault();
-    if (sections[number] !== 0) return;
-
-    setSections((prev) => {
-      const value = [...prev];
-      value[number] = player;
-      return value;
-    });
-    setPlayer((prev) => (prev === 1 ? 2 : 1));
+    if (section !== null || isGameOver) return;
+    handleOnSectionClick(number);
   };
+
+  //effects
 
   return (
     <button
-      disabled={!sections[number] === 0 || isGameOver}
-      className={`${styles.section} ${
-        sections[number] !== 0 ? styles.disabled : ""
-      }`}
+      disabled={section !== null || isGameOver}
+      className={`${styles.section} ${section !== null && styles.disabled}`}
       onClick={handleOnClick}
     >
       {displayedImg}
